@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  show : boolean = false;
+  constructor() { 
+
+  }
 
   ngOnInit() {
+  }
+
+  toggleView() {
+    console.log("Called")
+    this.show = !this.show;
   }
 
 }

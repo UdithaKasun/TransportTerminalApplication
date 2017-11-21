@@ -1,98 +1,182 @@
 <div class="jumbotron">
-    <h3 class="h3-responsive"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> New Card Registration</h3>
-    <hr class="my-2">
-    <br>
-    <!-- Login form -->
-    <div class="row">
-      <!-- User Details -->
-      <div class="col-md-6" *ngIf="false">
-          <form>
-              <div class="md-form">
-                  <i class="fa fa-user prefix grey-text"></i>
-                  <input type="text" id="defaultForm-email" class="form-control" mdbActive>
-                  <label for="defaultForm-email">Name</label>
-              </div>
-          
-              <div class="md-form">
-                  <i class="fa fa-envelope prefix grey-text"></i>
-                  <input type="text" id="defaultForm-pass" class="form-control" mdbActive>
-                  <label for="defaultForm-pass">Email</label>
-              </div>
-
-              <div class="md-form">
-                  <i class="fa fa-id-card-o prefix grey-text"></i>
-                  <input type="text" id="defaultForm-pass" class="form-control" mdbActive>
-                  <label for="defaultForm-pass">National Identification Number</label>
-              </div>
-
-              <div class="md-form">
-                  <i class="fa fa-fax prefix grey-text"></i>
-                  <input type="text" id="defaultForm-pass" class="form-control" mdbActive>
-                  <label for="defaultForm-pass">Phone Number</label>
-              </div>
-          
-              <div>
-                  <button class="btn btn-primary  waves-light" mdbRippleRadius><i class="fa fa-arrow-right" aria-hidden="true"></i>&nbsp; Next</button>
-              </div>
-          </form>
-      </div>
-      <!-- User Details -->
-
-      <!--New Ticket Card-->
-    <div class="col-md-4">
-        <div class="card">
-  
-          <!--Card image-->
-          <div class="view hm-white-slight waves-light" mdbRippleRadius>
-            <img src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" class="img-fluid" alt="Card image with a tree in a middle of a lake.">
-            <a>
-              <div class="mask"></div>
-            </a>
-          </div>
-  
-          <!--Card content-->
-          <div class="card-body">
-            <!--Title-->
-            <h4 class="card-title">Regular Card</h4>
-            <!--Text-->
-            <p class="card-text">
-              Just need a Ticket for quick ride. It's also possible
-              <br>
-              <br>
-              <br>
-            </p>
-            <a class="btn btn-indigo waves-light" mdbRippleRadius><i class="fa fa-file-o" aria-hidden="true"></i> &nbsp;New Ticket</a>
-          </div>
+  <h3 class="h3-responsive">
+    <i class="fa fa-credit-card-alt" aria-hidden="true" (click)="toggleView()"></i> New Card Registration</h3>
+  <hr class="my-2">
+  <br>
+  <!-- Start of Card Registration -->
+  <div class="row">
+    <!-- User Details -->
+    <div class="col-md-6" *ngIf="false">
+      <form>
+        <div class="md-form">
+          <i class="fa fa-user prefix grey-text"></i>
+          <input type="text" id="defaultForm-email" class="form-control" mdbActive>
+          <label for="defaultForm-email">Name</label>
         </div>
-      </div>
-      <!--New Ticket Card-->
-      <!--New Ticket Card-->
-    <div class="col-md-4">
-        <div class="card">
-  
-          <!--Card image-->
-          <div class="view hm-white-slight waves-light" mdbRippleRadius>
-            <img src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" class="img-fluid" alt="Card image with a tree in a middle of a lake.">
-            <a>
-              <div class="mask"></div>
-            </a>
-          </div>
-  
-          <!--Card content-->
-          <div class="card-body">
-            <!--Title-->
-            <h4 class="card-title">Get a New Ticket</h4>
-            <!--Text-->
-            <p class="card-text">
-              Just need a Ticket for quick ride. It's also possible
-              <br>
-              <br>
-              <br>
-            </p>
-            <a class="btn btn-indigo waves-light" mdbRippleRadius><i class="fa fa-file-o" aria-hidden="true"></i> &nbsp;New Ticket</a>
-          </div>
+
+        <div class="md-form">
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input type="text" id="defaultForm-pass" class="form-control" mdbActive>
+          <label for="defaultForm-pass">Email</label>
         </div>
-      </div>
-      <!--New Ticket Card-->
+
+        <div class="md-form">
+          <i class="fa fa-id-card-o prefix grey-text"></i>
+          <input type="text" id="defaultForm-pass" class="form-control" mdbActive>
+          <label for="defaultForm-pass">National Identification Number</label>
+        </div>
+
+        <div class="md-form">
+          <i class="fa fa-fax prefix grey-text"></i>
+          <input type="text" id="defaultForm-pass" class="form-control" mdbActive>
+          <label for="defaultForm-pass">Phone Number</label>
+        </div>
+
+        <div>
+          <button class="btn btn-primary  waves-light" mdbRippleRadius>
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>&nbsp; Next</button>
+        </div>
+      </form>
     </div>
+    <!-- User Details -->
+
+    <!--New Ticket Card-->
+    <div class="col-md-4" style="margin:auto" *ngIf="false">
+      <div class="card">
+
+        <!--Card image-->
+        <div class="view hm-white-slight waves-light" mdbRippleRadius>
+          <img src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" class="img-fluid" alt="Card image with a tree in a middle of a lake.">
+          <a>
+            <div class="mask"></div>
+          </a>
+        </div>
+
+        <!--Card content-->
+        <div class="card-body">
+          <!--Title-->
+          <h4 class="card-title">Regular Card</h4>
+          <!--Text-->
+          <p class="card-text">
+            Currently a Citizen of Sri Lanka, then this card is for you
+            <br>
+            <br>
+            <br>
+          </p>
+          <a class="btn btn-indigo waves-light" mdbRippleRadius>
+            <i class="fa fa-map" aria-hidden="true"></i> &nbsp;Regular Card</a>
+        </div>
+      </div>
+    </div>
+    <!--New Ticket Card-->
+    <!--New Ticket Card-->
+    <div class="col-md-4" style="margin:auto" *ngIf="false">
+      <div class="card">
+
+        <!--Card image-->
+        <div class="view hm-white-slight waves-light" mdbRippleRadius>
+          <img src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" class="img-fluid" alt="Card image with a tree in a middle of a lake.">
+          <a>
+            <div class="mask"></div>
+          </a>
+        </div>
+
+        <!--Card content-->
+        <div class="card-body">
+          <!--Title-->
+          <h4 class="card-title">Tourist Card</h4>
+          <!--Text-->
+          <p class="card-text">
+            Visiting Sri Lanka, then this card is for you. Important : This Card Expires within 7 Days
+            <br>
+            <br>
+            <br>
+          </p>
+          <a class="btn btn-secondary  waves-light" mdbRippleRadius>
+            <i class="fa fa-globe" aria-hidden="true"></i> &nbsp;Tourist Card</a>
+        </div>
+      </div>
+    </div>
+    <!--New Ticket Card-->
+
+    <!-- Topup Your Account -->
+    <div class="col-md-4" style="margin:auto" *ngIf="false">
+      <div class="card">
+
+        <!--Card image-->
+        <div class="view hm-white-slight waves-light" mdbRippleRadius>
+          <img src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" class="img-fluid" alt="Card image with a tree in a middle of a lake.">
+          <a>
+            <div class="mask"></div>
+          </a>
+        </div>
+
+        <!--Card content-->
+        <div class="card-body">
+          <!--Title-->
+          <h4 class="card-title">Top Up Your Account</h4>
+          <!--Text-->
+          <p class="card-text">
+            Your Account currently has 0 Credits.Press "Top Up" and enter money into the machine to Top Up your account. You can skip
+            this step and TopUp Later
+          </p>
+          <a class="btn btn-primary  waves-light" mdbRippleRadius>
+            <i class="fa fa-money" aria-hidden="true"></i> TopUp
+          </a>
+          <a class="btn btn-elegant    waves-light" mdbRippleRadius>
+            <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> SKIP
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Topup Your Account -->
+
+    <!-- Add Payment Details -->
+    <div class="col-md-6" *ngIf="true">
+      <p>Own a credit card, Add it here to TopUp your card with ease.Additionaly you can "Enable Auto Top Up" to automatically top up your when credit is low in your account to complete a ride</p>
+        <form>
+            <div class="btn-group" data-toggle="buttons">
+                <label >Card Type &nbsp;&nbsp;</label>
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off"> Master
+                    </label>
+                
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" checked> Visa
+                    </label>
+                    <br>
+                </div>
+               
+          <div class="md-form">
+            <i class="fa fa-envelope prefix grey-text"></i>
+            <input type="text" id="defaultForm-pass" class="form-control" mdbActive>
+            <label for="defaultForm-pass">Credit Card Number</label>
+          </div>
+  
+          <div class="md-form">
+            <i class="fa fa-id-card-o prefix grey-text"></i>
+            <input type="text" id="defaultForm-pass" class="form-control" mdbActive>
+            <label for="defaultForm-pass">Expiry Date</label>
+          </div>
+  
+          <div class="btn-group mr-4" data-toggle="buttons">
+              <label >Enable Auto Top Up &nbsp;&nbsp;</label>
+                  <label class="btn btn-primary">
+                      <input type="checkbox" autocomplete="off"> Checkbox 2
+                  </label>
+              
+                  <label class="btn btn-primary">
+                      <input type="checkbox" autocomplete="off"> Checkbox 3
+                  </label>
+              
+              </div>
+  
+          <div>
+            <button class="btn btn-primary  waves-light" mdbRippleRadius>
+              <i class="fa fa-arrow-right" aria-hidden="true"></i>&nbsp; Next</button>
+          </div>
+        </form>
+      </div>
+    <!-- Add Payment Details -->
+  </div>
 </div>
