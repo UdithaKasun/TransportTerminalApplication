@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
@@ -88,6 +89,12 @@ import { UserComponent } from './user/user.component';
     MatToolbarModule,
     MatTooltipModule,
     MDBBootstrapModule.forRoot(),
+    RouterModule.forRoot([
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'user', component: UserComponent }
+    ])
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
