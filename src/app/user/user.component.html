@@ -1,59 +1,84 @@
 <!-- This Component is the Landing Page -->
 
 <div class="jumbotron">
-    <h3 class="h3-responsive">Welcome Uditha Kasun</h3>
+    <h3 class="h3-responsive">Welcome {{name}}</h3>
     <hr class="my-2">
     <!--Panel-->
-<div class="card">
-    <h3 class="card-header primary-color white-text">Account Details</h3>
-    <div class="card-body">
-        <h4 class="card-title">Account Balance : Rs.5000</h4>
+    <div class="card">
+        <h3 class="card-header primary-color white-text">Account Details</h3>
+        <div class="card-body">
+            <h4 class="card-title">Account Balance : Rs.{{balance}}</h4>
+        </div>
+    </div>
+    <!--/.Panel-->
+    <br>
+    <!--Panel-->
+    <div class="card">
+        <h3 class="card-header primary-color white-text">Top Up Account</h3>
+        <div class="card-body center-elements">
+            <button type="button" class="btn btn-info waves-light" (click)="openModel(basicModal, 5000)" mdbRippleRadius>Rs. 5000</button>
+            <button type="button" class="btn btn-info waves-light" (click)="openModel(basicModal, 1000)" mdbRippleRadius>Rs. 1000</button>
+            <button type="button" class="btn btn-info waves-light" (click)="openModel(basicModal, 500)" mdbRippleRadius>Rs. 500</button>
+            <button type="button" class="btn btn-info waves-light" (click)="openModel(basicModal, 100)" mdbRippleRadius>Rs. 100</button>
+            <button type="button" class="btn btn-info waves-light" (click)="openModel(basicModal, 50)" mdbRippleRadius>Rs. 50</button>
+            <button type="button" class="btn btn-info waves-light" (click)="openModel(basicModal2, 0)" mdbRippleRadius>Custom</button>
+            <br>
+            <br>
+        </div>
+    </div>
+    <!--/.Panel-->
+    <br>
+    <div class="center-elements">
+        <button type="button" class="btn btn-success  waves-light" mdbRippleRadius [routerLink]="['/home']">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Eject Card</button>
     </div>
 </div>
-<!--/.Panel-->
-<br>
-      <!--Panel-->
-<div class="card">
-    <h3 class="card-header primary-color white-text">Top Up Account</h3>
-    <div class="card-body center-elements">
-        <button type="button" class="btn btn-info waves-light" (click)="basicModal.show()" mdbRippleRadius>Rs. 5000</button>
-        <button type="button" class="btn btn-info waves-light" mdbRippleRadius>Rs. 1000</button>
-        <button type="button" class="btn btn-info waves-light" mdbRippleRadius>Rs. 500</button>
-        <button type="button" class="btn btn-info waves-light" mdbRippleRadius>Rs. 100</button>
-        <button type="button" class="btn btn-info waves-light" mdbRippleRadius>Rs. 50</button>
-        <button type="button" class="btn btn-info waves-light" mdbRippleRadius>Custom</button>
-        <br>
-        <br>
-    </div>
-</div>
-<!--/.Panel-->
-<br>
-<div class="center-elements">
-    <button type="button" class="btn btn-success  waves-light" mdbRippleRadius><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Eject Card</button>
-</div>
-  </div>
 
-  <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-                      <span aria-hidden="true">×</span>
-                  </button>
-                  <h4 class="modal-title w-100" id="myModalLabel">Select Payment Method</h4>
-              </div>
-              <div class="modal-body">
-                  <div class="row center-elements">
-                      <button type="button" class="btn btn-outline-primary waves-light" mdbRippleRadius><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Cash</button>
-                      <button type="button" class="btn btn-outline-primary waves-light" mdbRippleRadius><i class="fa fa-cc-visa" aria-hidden="true"></i>&nbsp;Card</button>
-                      <br>
-                      <br>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-primary relative waves-light" mdbRippleRadius>Close</button>
-              </div>
-          </div>
-      </div>
-  </div>
-             
+<div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">Confirm</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row center-elements">
+                    Are you sure to pay this amount?
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning relative waves-light" (click)="closeModel(basicModal)" mdbRippleRadius>Close</button>
+                <button type="button" class="btn btn-success relative waves-light" (click)="confirm(basicModal)" mdbRippleRadius>Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mdbModal #basicModal2="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal2.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">Select Payment Method</h4>
+            </div>
+            <div class="modal-body">
+                <!-- <mat-form-field style="width:75%;"> -->
+                    <input type="number" placeholder="Amount" #customAmount  required>
+                <!-- </mat-form-field> -->
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning relative waves-light" (click)="closeModel(basicModal2)" mdbRippleRadius>Close</button>
+                <button type="button" class="btn btn-success relative waves-light" (click)="add(basicModal2, customAmount)" mdbRippleRadius>Add</button>
+            </div>
+        </div>
+    </div>
+</div>
