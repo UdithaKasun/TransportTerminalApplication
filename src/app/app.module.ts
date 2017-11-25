@@ -3,45 +3,46 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
+import { QRCodeModule } from 'angular2-qrcode';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
-import {CdkTableModule} from '@angular/cdk/table';
+import { CdkTableModule } from '@angular/cdk/table';
 
 import {
-   MatFormFieldModule,
-   MatAutocompleteModule,
-   MatButtonModule,
-   MatButtonToggleModule,
-   MatCardModule,
-   MatCheckboxModule,
-   MatChipsModule,
-   MatDatepickerModule,
-   MatDialogModule,
-   MatExpansionModule,
-   MatGridListModule,
-   MatIconModule,
-   MatInputModule,
-   MatListModule,
-   MatMenuModule,
-   MatNativeDateModule,
-   MatPaginatorModule,
-   MatProgressBarModule,
-   MatProgressSpinnerModule,
-   MatRadioModule,
-   MatRippleModule,
-   MatSelectModule,
-   MatSidenavModule,
-   MatSliderModule,
-   MatSlideToggleModule,
-   MatSnackBarModule,
-   MatSortModule,
-   MatTableModule,
-   MatTabsModule,
-   MatToolbarModule,
-   MatTooltipModule,
-   MatStepperModule,
-  } from '@angular/material';
+  MatFormFieldModule,
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatStepperModule,
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -58,6 +59,7 @@ import { ApiService } from './services/api.service';
     UserComponent
   ],
   imports: [
+    QRCodeModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
@@ -100,7 +102,7 @@ import { ApiService } from './services/api.service';
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'user', component: UserComponent }
+      { path: 'user/:pasengerNo', component: UserComponent }
     ])
   ],
   schemas: [ NO_ERRORS_SCHEMA ],

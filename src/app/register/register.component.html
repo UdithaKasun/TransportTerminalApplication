@@ -3,30 +3,34 @@
     <i class="fa fa-credit-card-alt" aria-hidden="true" (click)="toggleView()"></i> New Card Registration</h3>
   <hr class="my-2">
   <!-- Start of Card Registration -->
-  <mat-horizontal-stepper >
+  <mat-horizontal-stepper [linear]="false">
     <mat-step [stepControl]="personDetailsForm">
       <form [formGroup]="personDetailsForm" >
         <ng-template matStepLabel>Fill Person Details</ng-template>
         <mat-form-field style="width:50%;">
           <input matInput placeholder="Name" formControlName="nameCtrl" required>
+          <mat-error *ngIf="personDetailsForm.get('nameCtrl').invalid">{{getNameError()}}</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field style="width:50%;">
           <input matInput placeholder="Email" formControlName="emailCtrl" required >
+          <mat-error *ngIf="personDetailsForm.get('emailCtrl').invalid">{{getEmailError()}}</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field style="width:50%;">
           <input matInput placeholder="National Identification Number" formControlName="nicCtrl" required>
+          <mat-error *ngIf="personDetailsForm.get('nicCtrl').invalid">{{getNICError()}}</mat-error>
         </mat-form-field>
         <mat-form-field style="width:50%;">
           <input matInput placeholder="Phone Number" formControlName="phoneCtrl" required>
+          <mat-error *ngIf="personDetailsForm.get('phoneCtrl').invalid">{{getTelephoneError()}}</mat-error>
         </mat-form-field>
         <div>
-          <button mat-raised-button matStepperNext color="primary">Next</button>
+          <button [disabled]="personDetailsForm.invalid" mat-raised-button matStepperNext color="primary">Next</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="cardDetailsForm">
+    <mat-step [stepControl]="cardDetailsForm" >
       <form [formGroup]="cardDetailsForm">
         <ng-template matStepLabel>Choose Card Type</ng-template>
         <div class="row">
@@ -94,6 +98,7 @@
         <br>
         <mat-form-field style="width:20.5%;">
           <input matInput placeholder="Credit Card Number" formControlName="cardNumberCtrl" required >
+          <mat-error *ngIf="paymentDetailsForm.get('cardNumberCtrl').invalid">{{getCreditCardError()}}</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field>
@@ -109,14 +114,40 @@
             <mat-slide-toggle formControlName="autoTopupCtrl">Enable Auto Topup</mat-slide-toggle>
             <br>
             <br>
-          <button mat-raised-button matStepperNext color="primary" (click)="setData('')">Next</button>
+          <button mat-raised-button matStepperNext color="primary" (click)="setData('')" [disabled]="paymentDetailsForm.invalid">Next</button>
           <button mat-raised-button matStepperNext color="primary" (click)="setData('NONE')">Skip</button>
         </div>
       </form>
     </mat-step>
-    <mat-step>
+  <mat-step>
       <ng-template matStepLabel>Finish</ng-template>
-      <div class="col-md-4 center-elements">
+      <div class="col-md-4 center-elements" *ngIf="failed">
+          <div class="card card-dark">
+    
+            <!--Card image-->
+            <div class="view hm-white-slight waves-light" mdbRippleRadius>
+              <img src="http://brandefy.com/wp-content/uploads/failed-explainer-videos.jpg" class="img-fluid" alt="Card image with a tree in a middle of a lake.">
+              <a>
+                <div class="mask"></div>
+              </a>
+            </div>
+    
+            <!--Card content-->
+            <div class="card-body">
+              <!--Title-->
+              <h4 class="card-title">Card Setup Failed</h4>
+              <!--Text-->
+              <p class="card-text">Your Travel Card Creation Failed. Please Try Again Later</p>
+              <div>
+            </div>
+            <br>
+              <a class="btn btn-indigo waves-light" mdbRippleRadius><i class="fa fa-check" aria-hidden="true"></i> &nbsp;Finish</a>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="col-md-4 center-elements" *ngIf="!failed">
           <div class="card card-dark">
     
             <!--Card image-->
@@ -133,10 +164,17 @@
               <h4 class="card-title">Card Setup Complete</h4>
               <!--Text-->
               <p class="card-text">Your Travel Card is now successfull. You can use the travel card to travel around the country</p>
-              <a class="btn btn-indigo waves-light" mdbRippleRadius><i class="fa fa-check" aria-hidden="true"></i> &nbsp;Finish</a>
+              <div>
+                <qr-code [value]="regId" [size]="200"></qr-code>
+            </div>
+            <br>
+              <a class="btn btn-indigo waves-light" (click)="finishReg()" mdbRippleRadius><i class="fa fa-check" aria-hidden="true" ></i> &nbsp;Finish</a>
             </div>
           </div>
+          
         </div>
+
+        
     </mat-step>
   </mat-horizontal-stepper>
 </div>

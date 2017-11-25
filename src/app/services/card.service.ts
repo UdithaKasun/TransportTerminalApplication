@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class CardService {
 
+  currentCard : any;
   constructor(private apiService: ApiService) { }
 
   // Get Card By Id
@@ -23,6 +24,21 @@ export class CardService {
       });
   }
 
+  // Register New Card
+  topUpCard(cardId: string, topupDetails : Object): Observable<any> {
+    return this.apiService.post('/terminal/cards/' + cardId + '/topup', topupDetails)
+      .map(data => {
+        return data;
+      });
+  }
+
+  storeCurrentCard(card){
+    this.currentCard = card;
+  }
+
+  getCurrentCard(){
+    return this.currentCard;
+  }
   // Update Customer
   // updateCustomer(customer: Customer): Observable<any> {
   //   return this.apiService.put('/customer/' + customer.customer_id , { customer : customer })
