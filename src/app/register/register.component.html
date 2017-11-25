@@ -4,30 +4,30 @@
   <hr class="my-2">
   <!-- Start of Card Registration -->
   <mat-horizontal-stepper >
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" >
+    <mat-step [stepControl]="personDetailsForm">
+      <form [formGroup]="personDetailsForm" >
         <ng-template matStepLabel>Fill Person Details</ng-template>
         <mat-form-field style="width:50%;">
           <input matInput placeholder="Name" formControlName="nameCtrl" required>
         </mat-form-field>
         <br>
         <mat-form-field style="width:50%;">
-          <input matInput placeholder="Email" formControlName="nameCtrl" required >
+          <input matInput placeholder="Email" formControlName="emailCtrl" required >
         </mat-form-field>
         <br>
         <mat-form-field style="width:50%;">
-          <input matInput placeholder="National Identification Number" formControlName="nameCtrl" required>
+          <input matInput placeholder="National Identification Number" formControlName="nicCtrl" required>
         </mat-form-field>
         <mat-form-field style="width:50%;">
-          <input matInput placeholder="Phone Number" formControlName="nameCtrl" required>
+          <input matInput placeholder="Phone Number" formControlName="phoneCtrl" required>
         </mat-form-field>
         <div>
           <button mat-raised-button matStepperNext color="primary">Next</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
+    <mat-step [stepControl]="cardDetailsForm">
+      <form [formGroup]="cardDetailsForm">
         <ng-template matStepLabel>Choose Card Type</ng-template>
         <div class="row">
           <!--New User Card-->
@@ -48,7 +48,7 @@
           <h4 class="card-title">Regular Card</h4>
           <!--Text-->
           <p class="card-text">Already a Permanent Citizen of Sri Lanka, then this choice is for you</p>
-          <a class="btn btn-indigo waves-light" mdbRippleRadius><i class="fa fa-check" aria-hidden="true"></i> &nbsp;Regular Card</a>
+          <button matStepperNext class="btn btn-indigo waves-light" mdbRippleRadius (click)="setCardType('REGULAR')"><i class="fa fa-check" aria-hidden="true"></i> &nbsp;Regular Card</button>
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@
           <h4 class="card-title">Travel Card</h4>
           <!--Text-->
           <p class="card-text">Visiting Sri Lanka , Then this choice is for you.This card expires within 7 days</p>
-          <a class="btn btn-indigo waves-light" mdbRippleRadius><i class="fa fa-check" aria-hidden="true"></i> &nbsp;Travel Card</a>
+          <button matStepperNext (click)="setCardType('TOUR')" class="btn btn-indigo waves-light" mdbRippleRadius><i class="fa fa-check" aria-hidden="true"></i> &nbsp;Travel Card</button>
         </div>
       </div>
     </div>
@@ -81,11 +81,11 @@
       </form>
       <br>
     </mat-step>
-    <mat-step [stepControl]="thirdFormGroup">
-      <form [formGroup]="thirdFormGroup" >
+    <mat-step [stepControl]="paymentDetailsForm">
+      <form [formGroup]="paymentDetailsForm" >
         <ng-template matStepLabel>Top Up Your Account</ng-template>
         <mat-form-field>
-          <mat-select placeholder="Payment Method">
+          <mat-select placeholder="Payment Method" formControlName="paymentType">
             <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod.value">
               {{ paymentMethod.Name }}
             </mat-option>
@@ -93,23 +93,24 @@
         </mat-form-field>
         <br>
         <mat-form-field style="width:20.5%;">
-          <input matInput placeholder="Credit Card Number" formControlName="nameCtrl" required >
+          <input matInput placeholder="Credit Card Number" formControlName="cardNumberCtrl" required >
         </mat-form-field>
         <br>
         <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="Expiry Date">
+          <input matInput [matDatepicker]="picker" placeholder="Expiry Date" formControlName="expiryDateCtrl">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker #picker ></mat-datepicker>
         </mat-form-field>
         <br>
         <mat-form-field style="width:20.5%;">
-          <input matInput placeholder="CVC Number" formControlName="nameCtrl" required>
+          <input matInput placeholder="CVC Number" formControlName="cvcCtrl" required>
         </mat-form-field>
         <div>
-            <mat-slide-toggle>Enable Auto Topup</mat-slide-toggle>
+            <mat-slide-toggle formControlName="autoTopupCtrl">Enable Auto Topup</mat-slide-toggle>
             <br>
             <br>
-          <button mat-raised-button matStepperNext color="primary">Next</button>
+          <button mat-raised-button matStepperNext color="primary" (click)="setData('')">Next</button>
+          <button mat-raised-button matStepperNext color="primary" (click)="setData('NONE')">Skip</button>
         </div>
       </form>
     </mat-step>

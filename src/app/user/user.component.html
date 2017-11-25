@@ -1,7 +1,7 @@
 <!-- This Component is the Landing Page -->
 
 <div class="jumbotron">
-    <h3 class="h3-responsive">Welcome Uditha Kasun</h3>
+    <h3 class="h3-responsive">Welcome {{ passenger.}}</h3>
     <hr class="my-2">
     <!--Panel-->
 <div class="card">
@@ -12,6 +12,7 @@
 </div>
 <!--/.Panel-->
 <br>
+
       <!--Panel-->
 <div class="card">
     <h3 class="card-header primary-color white-text">Top Up Account</h3>
@@ -31,7 +32,7 @@
 <div class="center-elements">
     <button type="button" class="btn btn-success  waves-light" mdbRippleRadius><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Eject Card</button>
 </div>
-  </div>
+</div>
 
   <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
       <div class="modal-dialog" role="document">

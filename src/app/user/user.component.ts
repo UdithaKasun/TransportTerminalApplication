@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardService } from '../services/card.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  userId : String;
+  passenger : any;
+  constructor(private cardService : CardService) { 
 
-  ngOnInit() {
   }
 
+  ngOnInit() {
+    this.userId = "5a18c98edc2bc8480fba2597";
+    this.loadUser(this.userId);
+  }
+
+  loadUser(userId){
+    this.cardService.getCardById(userId)
+    .subscribe((data) => {
+      this.passenger = data.passenger;
+      console.log(this.passenger);
+    },(error)=>{
+      alert("Error Fetching User...");
+    })
+  }
 }

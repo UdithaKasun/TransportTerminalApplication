@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -45,6 +47,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
+import { CardService } from './services/card.service';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,9 @@ import { UserComponent } from './user/user.component';
     UserComponent
   ],
   imports: [
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     BrowserModule,
     CdkTableModule,
@@ -97,7 +104,10 @@ import { UserComponent } from './user/user.component';
     ])
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [
+    ApiService,
+    CardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
